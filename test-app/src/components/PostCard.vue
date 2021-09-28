@@ -8,6 +8,7 @@
     <v-layout>
       <form @submit.prevent="_submit" style="width: 100%; padding: 50px">
         <v-text-field
+            autofocus="true"
             v-model="titlePost"
             label="Title"
             required
@@ -15,6 +16,7 @@
         <v-textarea
             v-model="bodyPost"
             label="Body"
+            :rules="[text => (text && text.length <= 255) || 'Body должен быть менее 255 символов']"
             counter
         ></v-textarea>
         <v-btn class="mr-4" type="submit" :disabled="isSubmit">
